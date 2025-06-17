@@ -2,7 +2,7 @@
 name : CICD
 
 #2. 워크플로우가 시작될 조건을 지정
-# main 브랜치에 push될 때 워크플로우가 실행됨
+#main 브랜치에 push될 때 워크플로우가 실행됨
 on:
   push:
     branches: [main]
@@ -17,7 +17,7 @@ jobs:
         with:
           distribution: 'corretto'
           java-version: '17'
-
+      
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew #chmod +x 명령어를 통해 gradlew에 실행권한을 부여한다.
 
@@ -30,21 +30,20 @@ jobs:
         with:
           format: YYYY-MM-DDTHH-mm-ss
           utcOffset: "+09:00"
-      
+
       - name: Set artifact
         run: |
           JAR_PATH=$(ls ./build/libs/*.jar | head -n 1)
           ARTIFACT_NAME=$(basename $JAR_PATH)
           echo "artifact=$ARTIFACT_NAME" >> $GITHUB_ENV
-
-
+      
       - name: Beanstalk Deploy
         uses: einaregilsson/beanstalk-deploy@v20
-        with:
+        with: 
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: springboot-developer
-          environment_name: Springboot-developer-env
+          application_name: springboot-developer2
+          environment_name: Springboot-developer2-env 
           version_label: github-action-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: ./build/libs/${{env.artifact}}
