@@ -7,6 +7,6 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://awseb-e-ckvc3c9mq3-stack-awsebrdsdatabase-ou5wycndzqjp.cc9cyokkk9iw.us-east-1.rds.amazonaws.com:3306/ebdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    url: jdbc:mysql://awseb-e-zwydx2rngy-stack-awsebrdsdatabase-ozqgxukwcvue.c1k86au8crpe.ap-northeast-2.rds.amazonaws.com:3306/ebdb?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
     username: testpm
     password: "gogotkddnr7."
